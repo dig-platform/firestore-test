@@ -1,10 +1,12 @@
 {
   "name": "@dig-platform/firestore-test",
-  "version": "0.0.1",
+  "version": "0.2.4",
   "description": "Online testing utilities for Google Firebase Firestore",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "test"
+    "build": "minify index.js -d dist",
+    "test": "echo \"No test specified\" && exit 0",
+    "deploy": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
@@ -30,5 +32,12 @@
   "bugs": {
     "url": "https://github.com/dig-platform/firestore-test/issues"
   },
-  "homepage": "https://github.com/dig-platform/firestore-test#readme"
+  "homepage": "https://github.com/dig-platform/firestore-test#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "babel-minify": "^0.5.1"
+  }
 }

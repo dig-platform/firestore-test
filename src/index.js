@@ -16,7 +16,7 @@ class FirestoreTest {
      *
      * @returns {*}
      */
-    testBed() {
+    firebaseTest() {
         return firebaseTest(this.config, this.pathToServiceAccountKey);
     }
 
@@ -61,7 +61,17 @@ class FirestoreTest {
         });
         return createBatch.commit().then(res => {
             return {
+                docs,
                 refs,
+                makeDocumentSnapshot: (path) => {
+                    return this.firebaseTest().firestore.makeDocumentSnapshot(docs[path], path);
+                },
+                before: (path) => {
+                    return docs[path];
+                },
+                after: (path) => {
+                    return refs[path].get().then(r => r.data())
+                },
                 destroy: () => destroyBatch.commit()
             }
         });
@@ -70,3 +80,4 @@ class FirestoreTest {
 }
 
 module.exports = (config, pathToServiceAccountKey) => new FirestoreTest(config, pathToServiceAccountKey);
+

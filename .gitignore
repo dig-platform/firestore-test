@@ -1,1 +1,5 @@
 /.idea
+/.DS_Store
+/examples/firestore-on-create/.firebaserc
+/examples/firestore-on-create/firebase.json
+/src/node_modules

@@ -23,6 +23,18 @@ You can also install this with NPM.
 
 `npm install @dig-platform/firestore-test`
 
+Test DB API
+-----------
+
+| Name | Description |
+| ---- | ----------- |
+| `docs` | The original test data. The key is the path and the value is the data. |
+| `refs` | A collection of the Firestore refs that were created. The key is the path and the value is the ref. |
+| `before(path)` | Get the original state of the doc |
+| `after(path)` | Get the data that is persisted to the test db |
+| `makeDocumentSnapshot(path)` | Get the test bed document snapshot for a path |
+| `destroy()` | Deletes all of the docs that you have persisted in the test db | 
+
 Example
 -------
 
@@ -60,6 +72,10 @@ describe('Firestore Test Example', () => {
    });
 });
 ```
+
+
+
+
 
 
 
